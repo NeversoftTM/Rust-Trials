@@ -14,32 +14,36 @@ fn main() {
             continue;
         }
 
-        let left = match parts[0].parse::<f64>() {
-            Ok(num) => num,
-            Err(_) => {
-                println!("Invalid expression");
-                continue;
-            }
-        };
+        let num_1 = match num_1.trim().parse::<i32>() {
+    Ok(num) => num,
+    Err(_) => {
+        println!("Invalid input: {}", num_1);
+        continue;
+    }
+};
 
-        let right = match parts[2].parse::<f64>() {
-            Ok(num) => num,
-            Err(_) => {
-                println!("Invalid expression");
-                continue;
-            }
-        };
+let num_2 = match num_2.trim().parse::<i32>() {
+    Ok(num) => num,
+    Err(_) => {
+        println!("Invalid input: {}", num_2);
+        continue;
+    }
+};
 
-        let result = match parts[1] {
-            "+" => left + right,
-            "-" => left - right,
-            "*" => left * right,
-            "/" => left / right,
-            _ => {
-                println!("Invalid operator");
-                continue;
-            }
-        };
+match operand.trim() {
+    "+" => println!("{} + {} = {}", num_1, num_2, num_1 + num_2),
+    "-" => println!("{} - {} = {}", num_1, num_2, num_1 - num_2),
+    "*" => println!("{} * {} = {}", num_1, num_2, num_1 * num_2),
+    "/" => {
+        if num_2 == 0 {
+            println!("Error: Division by zero");
+        } else {
+            println!("{} / {} = {}", num_1, num_2, num_1 / num_2);
+        }
+    },
+    _ => println!("Invalid operand"),
+}
+
 
         println!("Result: {}", result);
     }
